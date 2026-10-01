@@ -383,53 +383,23 @@ function ResumeApi() {
 /* =================== Showcase =================== */
 
 const CONCEPTS = [
-  { id: 'map', tab: 'Integration map', blurb: 'The systems I have integrated, as an API-led network.', Component: IntegrationMap },
-  { id: 'journey', tab: 'Follow the message', blurb: 'A payload travels through my career; every role transforms it.', Component: MessageJourney },
-  { id: 'dataweave', tab: 'DataWeave playground', blurb: 'My resume as input, a DataWeave script as the lens.', Component: DataWeavePlayground },
-  { id: 'api', tab: 'Resume as an API', blurb: 'Call the endpoints and read the responses.', Component: ResumeApi },
+  { blurb: 'The systems I have integrated, as an API-led network.', Component: IntegrationMap },
+  { blurb: 'A payload travels through my career; every role transforms it.', Component: MessageJourney },
+  { blurb: 'My resume as input, a DataWeave script as the lens.', Component: DataWeavePlayground },
+  { blurb: 'Call the endpoints and read the responses.', Component: ResumeApi },
 ];
 
 export default function Showcase() {
-  // ponytail: random default per page load, no persistence
-  const [active, setActive] = useState(() => Math.floor(Math.random() * CONCEPTS.length));
-  const tabs = useRef([]);
-  const { Component, blurb } = CONCEPTS[active];
-
-  const onKey = (e, i) => {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-    const n = (i + (e.key === 'ArrowRight' ? 1 : CONCEPTS.length - 1)) % CONCEPTS.length;
-    setActive(n);
-    tabs.current[n]?.focus();
-  };
+  // ponytail: one concept picked at random per page load, no switcher
+  const [{ Component, blurb }] = useState(() => CONCEPTS[Math.floor(Math.random() * CONCEPTS.length)]);
 
   return (
     <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6" aria-labelledby="explore">
-      <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="mono text-xs text-accent">&lt;flow name="explore"&gt;</p>
-          <h2 id="explore" className="display mt-2 text-3xl font-semibold text-ink sm:text-4xl">Explore my career</h2>
-        </div>
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Ways to explore">
-          {CONCEPTS.map((c, i) => (
-            <button
-              key={c.id}
-              ref={(el) => (tabs.current[i] = el)}
-              id={`tab-${c.id}`}
-              role="tab"
-              type="button"
-              aria-selected={i === active}
-              aria-controls="showcase-panel"
-              tabIndex={i === active ? 0 : -1}
-              onClick={() => setActive(i)}
-              onKeyDown={(e) => onKey(e, i)}
-              className="concept-tab"
-            >
-              <span className="mono text-[11px] opacity-70">0{i + 1}</span> {c.tab}
-            </button>
-          ))}
-        </div>
+      <div className="mb-5">
+        <p className="mono text-xs text-accent">&lt;flow name="explore"&gt;</p>
+        <h2 id="explore" className="display mt-2 text-3xl font-semibold text-ink sm:text-4xl">Explore my career</h2>
       </div>
-      <div id="showcase-panel" role="tabpanel" aria-labelledby={`tab-${CONCEPTS[active].id}`} className="overflow-hidden rounded-2xl border border-line bg-surface">
+      <div className="overflow-hidden rounded-2xl border border-line bg-surface">
         <p className="border-b border-line px-5 py-3 text-sm text-muted">{blurb}</p>
         <Component />
       </div>

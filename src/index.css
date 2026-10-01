@@ -41,12 +41,6 @@ summary::-webkit-details-marker { display: none; }
 }
 
 /* ---------- Showcase ---------- */
-.concept-tab {
-  min-height: 2.75rem; padding: 0 1rem; border-radius: 999px; border: 1px solid rgb(var(--line));
-  background: rgb(var(--surface)); color: rgb(var(--muted)); font-size: .875rem; font-weight: 500; cursor: pointer;
-}
-.concept-tab:hover { color: rgb(var(--ink)); }
-.concept-tab[aria-selected="true"] { background: rgb(var(--accent)); border-color: rgb(var(--accent)); color: rgb(var(--ground)); }
 .chip {
   min-height: 2.5rem; padding: 0 .9rem; border-radius: .6rem; border: 1px solid rgb(var(--line));
   background: rgb(var(--ground)); color: rgb(var(--muted)); font-size: .8125rem; font-weight: 500; cursor: pointer;
