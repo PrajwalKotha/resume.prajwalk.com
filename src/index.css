@@ -2,14 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+:root {
+  --ground: 11 18 32;
+  --surface: 18 28 48;
+  --line: 38 52 78;
+  --ink: 231 237 246;
+  --muted: 154 168 189;
+  --accent: 31 176 234;
+  --accent-strong: 92 200 242;
+  --live: 52 211 153;
+  --award: 242 193 78;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: #0a0e1a;
+  margin: 0;
+  background: rgb(var(--ground));
+  color: rgb(var(--ink));
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.display { font-family: 'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif; letter-spacing: -0.02em; }
+.mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+
+summary::-webkit-details-marker { display: none; }
+
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
 }
