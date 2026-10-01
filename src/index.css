@@ -55,7 +55,8 @@ pre.json, pre.dw { margin: 0; overflow: auto; font: 13px/1.6 'IBM Plex Mono', mo
 
 /* 1: integration map */
 .map-hero { position: relative; min-height: 620px; background: rgb(var(--ground)); }
-.map-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-scroll { position: absolute; inset: 0; }
+.map-hero svg { width: 100%; height: 100%; display: block; }
 .map-copy { position: relative; z-index: 1; max-width: 26rem; padding: 2.25rem 1.75rem; display: grid; gap: .9rem;
   background: linear-gradient(90deg, rgb(var(--ground)) 70%, transparent); }
 .map-col { font: 500 11px 'IBM Plex Mono', monospace; letter-spacing: .14em; fill: rgb(var(--muted)); }
@@ -71,9 +72,10 @@ pre.json, pre.dw { margin: 0; overflow: auto; font: 13px/1.6 'IBM Plex Mono', mo
 .yearbar { display: grid; gap: .4rem; padding: .9rem 1.25rem 1.1rem; border-top: 1px solid rgb(var(--line)); }
 .yearbar input { width: 100%; accent-color: rgb(var(--accent)); min-height: 1.75rem; }
 @media (max-width: 700px) {
-  .map-hero { min-height: 0; }
-  .map-copy { max-width: none; background: none; padding-bottom: .5rem; }
-  .map-hero svg { position: relative; height: auto; aspect-ratio: 1440 / 760; }
+  .map-hero { min-height: 0; display: flex; flex-direction: column; }
+  .map-copy { order: -1; max-width: none; background: none; padding: 1.5rem 1.25rem .75rem; }
+  .map-scroll { position: static; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: .5rem; }
+  .map-hero svg { width: 760px; height: auto; aspect-ratio: 905 / 700; }
 }
 
 /* 2: message journey */
@@ -120,3 +122,10 @@ pre.json, pre.dw { margin: 0; overflow: auto; font: 13px/1.6 'IBM Plex Mono', mo
 }
 
 @media (prefers-reduced-motion: reduce) { .pulse { display: none; } }
+
+/* phones: wrap code instead of hiding it past the edge */
+@media (max-width: 700px) {
+  pre.json, pre.dw { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+  .panes .pane:first-child { order: 3; }
+  .panes .pane:first-child pre { max-height: 220px; }
+}

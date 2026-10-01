@@ -87,12 +87,28 @@ COLS.forEach((c, ci) => {
   });
 });
 
+const NARROW = '(max-width: 700px)';
+
+function useNarrow() {
+  const [narrow, setNarrow] = useState(() => window.matchMedia(NARROW).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(NARROW);
+    const on = () => setNarrow(mq.matches);
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  return narrow;
+}
+
 function IntegrationMap() {
   const [year, setYear] = useState(2026);
+  // Phones get the network cropped to its own bounds (no room for the side copy) at a readable scale.
+  const narrow = useNarrow();
   return (
     <>
       <div className="map-hero">
-        <svg viewBox="0 0 1440 760" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" focusable="false">
+        <div className="map-scroll">
+        <svg viewBox={narrow ? '535 40 905 700' : '0 0 1440 760'} preserveAspectRatio="xMaxYMid meet" aria-hidden="true" focusable="false">
           <defs>
             <pattern id="map-dots" width="28" height="28" patternUnits="userSpaceOnUse">
               <circle cx="1" cy="1" r="1" fill="rgb(var(--line))" />
@@ -140,11 +156,13 @@ function IntegrationMap() {
             );
           })}
         </svg>
+        </div>
         <div className="map-copy">
           <p className="mono text-xs uppercase tracking-[0.16em] text-accent">Integration estate, {year}</p>
           <h3 className="display text-3xl font-semibold leading-tight text-ink sm:text-4xl">{MILESTONE[year]}</h3>
           <p className="text-muted">
             Systems I've connected over the years, flowing through System, Process and Experience APIs. Drag the year to watch the estate grow.
+            <span className="sm:hidden"> Swipe the map sideways to see it all.</span>
           </p>
         </div>
       </div>
