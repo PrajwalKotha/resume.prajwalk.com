@@ -15,12 +15,12 @@ export const PROFILE = {
     { label: 'prajwalk.com', href: 'https://prajwalk.com' },
   ],
   summary:
-    "Integration architect and lead engineer with 9+ years of end-to-end MuleSoft and Salesforce delivery: design, build, deploy and support. I own the integration architecture for IHG's P&T CRM & Loyalty, Partnerships and Integrations estate (around 60 MuleSoft repositories), set the standards every API is built and run to, and lead large Salesforce org-to-org migrations from planning to cutover.",
+    "Integration architect and lead engineer with 9+ years of end-to-end MuleSoft and Salesforce delivery: design, build, deploy and support. I own the integration architecture for IHG's P&T CRM & Loyalty, Partnerships and Integrations estate, set the standards every API is built and run to, and lead large Salesforce org-to-org migrations from planning to cutover.",
 };
 
 export const STATS = [
   { value: '9+', label: 'Years in integration' },
-  { value: '~60', label: 'Production MuleSoft repos owned' },
+  { value: '100/s', label: 'Real-time sync throughput' },
   { value: '6×', label: 'Salesforce certified' },
   { value: '2M+', label: 'Records migrated between orgs' },
   { value: '9', label: 'Salesforce orgs integrated' },
@@ -38,7 +38,7 @@ export const EXPERIENCE = [
     kind: 'HTTP Request',
     current: true,
     bullets: [
-      ['Production integrations', 'Build and maintain around 60 production MuleSoft integration repositories across Salesforce, partner and internal systems: new builds, upgrades, monitoring, incidents and enhancements.'],
+      ['Production integrations', 'Build and maintain the production MuleSoft integration estate across Salesforce, partner and internal systems: new builds, upgrades, monitoring, incidents and enhancements.'],
       ['Migration platform', 'Designed and built a reusable Salesforce org-to-org migration tool (API, web UI and MCP tool) covering any objects including Files; migrated around 200,000 records across multiple objects and cut migration effort by around 80%.'],
       ['SOAP retirement', 'Migrated all production APIs from Salesforce SOAP login to External Client Apps (OAuth 2.0) before Salesforce retires the endpoint, and removed all stored usernames, passwords and tokens.'],
       ['Runtime upgrade', 'Upgraded the MuleSoft estate to the Long-Term Support runtime on Java 17, moving off the EDGE channel and Java 8. This cut the forced-upgrade cycle and made the platform cheaper to maintain.'],
