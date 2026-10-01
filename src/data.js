@@ -9,6 +9,7 @@ export const PROFILE = {
   email: 'k.satyasuryaprajwal@gmail.com',
   phone: '+91 94944 95234',
   photo: '/photo.jpg',
+  resume: '/Prajwal_Kotha_Resume.pdf',
   links: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/prajwalkotha' },
     { label: 'Trailblazer', href: 'https://www.salesforce.com/trailblazer/prajwalk' },

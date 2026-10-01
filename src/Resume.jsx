@@ -2,6 +2,7 @@ import {
   ArrowUpRight,
   Award,
   ChevronDown,
+  Download,
   GitFork,
   GraduationCap,
   Inbox,
@@ -21,6 +22,7 @@ import {
   SKILLS,
   STATS,
 } from './data';
+import Showcase from './Showcase';
 
 const KIND_ICON = {
   'HTTP Listener': Inbox,
@@ -32,6 +34,7 @@ const KIND_ICON = {
 };
 
 const NAV = [
+  ['Explore', '#explore'],
   ['About', '#about'],
   ['Experience', '#experience'],
   ['Skills', '#skills'],
@@ -70,10 +73,11 @@ function Header() {
           ))}
         </ul>
         <a
-          href={`mailto:${PROFILE.email}`}
+          href={PROFILE.resume}
+          download
           className="ml-auto inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-4 text-sm font-semibold text-ground hover:bg-accent-strong md:ml-0"
         >
-          <Mail size={16} aria-hidden="true" /> Get in touch
+          <Download size={16} aria-hidden="true" /> <span className="sm:hidden">Resume</span><span className="hidden sm:inline">Download resume</span>
         </a>
       </nav>
     </header>
@@ -97,6 +101,13 @@ function Hero() {
             <MapPin size={16} aria-hidden="true" /> {PROFILE.location}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={PROFILE.resume}
+              download
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-ground hover:bg-accent-strong"
+            >
+              <Download size={16} aria-hidden="true" /> Download resume
+            </a>
             {PROFILE.links.map((l) => (
               <a
                 key={l.href}
@@ -290,6 +301,11 @@ function Contact() {
         <h2 className="display mt-2 text-3xl font-semibold text-ink sm:text-4xl">Let's build something that connects.</h2>
         <ul className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6">
           <li>
+            <a href={PROFILE.resume} download className="inline-flex min-h-11 items-center gap-2 font-semibold text-accent hover:text-accent-strong">
+              <Download size={18} aria-hidden="true" /> Download resume (PDF)
+            </a>
+          </li>
+          <li>
             <a href={`mailto:${PROFILE.email}`} className="inline-flex min-h-11 items-center gap-2 text-ink hover:text-accent">
               <Mail size={18} aria-hidden="true" /> {PROFILE.email}
             </a>
@@ -325,6 +341,7 @@ export default function Resume() {
       <main>
         <Hero />
         <Stats />
+        <Showcase />
         <About />
         <Experience />
         <Skills />
