@@ -2,7 +2,8 @@
 const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
 
 export default {
-  content: ['./index.html', './src/**/*.{js,jsx}'],
+  // src/3d has its own stylesheet; scanning it would add stray utilities to the resume
+  content: ['./index.html', './src/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
