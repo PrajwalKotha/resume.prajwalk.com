@@ -1,3 +1,20 @@
 {
-  "rewrites": [{ "source": "/3d", "destination": "/3d/index.html" }]
+  "rewrites": [
+    {
+      "source": "/classic",
+      "destination": "/classic/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/3d",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/3d/",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
 }

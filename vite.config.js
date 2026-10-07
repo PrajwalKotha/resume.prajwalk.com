@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      // the resume at / and the talking 3D page at /3d
+      // the talking 3D page at / and the classic resume at /classic
       input: {
         main: resolve(__dirname, 'index.html'),
-        '3d': resolve(__dirname, '3d/index.html'),
+        classic: resolve(__dirname, 'classic/index.html'),
       },
     },
   },

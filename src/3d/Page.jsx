@@ -16,7 +16,7 @@ function Header() {
         {PROFILE.shortName}
       </a>
       <nav aria-label="Main">
-        <a href="/" className="toplink">
+        <a href="/classic" className="toplink">
           Full résumé <ArrowUpRight size={15} aria-hidden="true" />
         </a>
         <a href={PROFILE.resume} download className="btn btn-ink btn-sm">
@@ -537,7 +537,7 @@ function Footer() {
         <a href={PROFILE.resume} download className="btn btn-ghost">
           <Download size={16} aria-hidden="true" /> Résumé PDF
         </a>
-        <a href="/" className="btn btn-ghost">
+        <a href="/classic" className="btn btn-ghost">
           Full résumé <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </div>

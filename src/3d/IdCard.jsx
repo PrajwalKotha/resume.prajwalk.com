@@ -134,7 +134,7 @@ export function CardBack() {
       <div className="cb-contact">
         <img src={CARD.qr} alt="QR code for resume.prajwalk.com" className="qr" width="31" height="31" />
         <div>
-          <a href="/">resume.prajwalk.com</a>
+          <a href="/classic">resume.prajwalk.com/classic</a>
           <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>
           <a href={linkedin.href} target="_blank" rel="noreferrer">
             {linkedin.href.replace('https://www.', '')}
