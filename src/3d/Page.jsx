@@ -197,7 +197,8 @@ function CardScene() {
     let lastY = window.scrollY;
 
     const frame = (now) => {
-      const dt = Math.min((now - last) / 1000, 1 / 30);
+      // real elapsed time, so the card keeps pace on slow or throttled screens
+      const dt = Math.min((now - last) / 1000, 0.25);
       last = now;
       const r = scene.current.getBoundingClientRect();
       const vh = window.innerHeight;
@@ -214,10 +215,15 @@ function CardScene() {
         s.ry = target;
         s.sw = 0;
       } else {
-        s.vry += (90 * (target - s.ry) - 17 * s.vry) * dt;
-        s.ry += s.vry * dt;
-        s.vsw += (36 * (clamp(-vel * 0.004, -7, 7) - s.sw) - 4 * s.vsw) * dt;
-        s.sw += s.vsw * dt;
+        const swingTo = clamp(-vel * 0.004, -7, 7);
+        // fixed 1/120 s steps keep the springs stable whatever the frame rate
+        for (let left = dt; left > 0; left -= 1 / 120) {
+          const h = Math.min(left, 1 / 120);
+          s.vry += (90 * (target - s.ry) - 17 * s.vry) * h;
+          s.ry += s.vry * h;
+          s.vsw += (36 * (swingTo - s.sw) - 4 * s.vsw) * h;
+          s.sw += s.vsw * h;
+        }
       }
 
       const a = s.ry;
